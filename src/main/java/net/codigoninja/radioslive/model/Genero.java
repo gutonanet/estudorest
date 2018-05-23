@@ -4,10 +4,13 @@
 package net.codigoninja.radioslive.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * @author Augusto Lemes
@@ -27,11 +30,16 @@ public class Genero implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	private Long id;
-	private String nome;
 	
-	public Genero(Long id, String nome) {
+	private String nome;
+
+	@Temporal(value=TemporalType.TIMESTAMP)
+	private Date dataAtualizacao;
+	
+	public Genero(Long id, String nome, Date dataAtualizacao) {
 		this.id = id;
 		this.nome = nome;
+		this.dataAtualizacao = dataAtualizacao;
 	}
 
 	public Long getId() {
@@ -48,6 +56,14 @@ public class Genero implements Serializable{
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public Date getDataAtualizacao() {
+		return dataAtualizacao;
+	}
+
+	public void setDataAtualizacao(Date dataAtualizacao) {
+		this.dataAtualizacao = dataAtualizacao;
 	}
 	
 	
