@@ -31,7 +31,7 @@ public class Radio implements Serializable{
 	
 	private String url;
 	
-	@Temporal(value=TemporalType.TIMESTAMP)
+	@Temporal(value=TemporalType.DATE)
 	private Date dataAtualizacao;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
@@ -45,6 +45,10 @@ public class Radio implements Serializable{
 	
 	@Lob
 	private byte[] logo;
+	
+	public Radio() {
+		super();
+	}
 
 	
 	

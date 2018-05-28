@@ -33,8 +33,12 @@ public class Genero implements Serializable{
 	
 	private String nome;
 
-	@Temporal(value=TemporalType.TIMESTAMP)
+	@Temporal(value=TemporalType.DATE)
 	private Date dataAtualizacao;
+	
+	public Genero() {
+		super();
+	}
 	
 	public Genero(Long id, String nome, Date dataAtualizacao) {
 		this.id = id;

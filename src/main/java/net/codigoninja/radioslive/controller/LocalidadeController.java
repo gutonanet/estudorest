@@ -1,6 +1,3 @@
-/**
- * 
- */
 package net.codigoninja.radioslive.controller;
 
 import java.text.ParseException;
@@ -13,34 +10,36 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.codigoninja.radioslive.model.Genero;
+import net.codigoninja.radioslive.model.Localidade;
 import net.codigoninja.radioslive.repository.GeneroRepository;
+import net.codigoninja.radioslive.repository.LocalidadeRepository;
 
 /**
+ * 
  * @author Augusto Lemes
- * @since 20/05/2018
+ * @since 27/05/2018
  *
  */
+
 @RestController
-public class GeneroController {
+public class LocalidadeController {
 	
 	@Autowired
-	private GeneroRepository generoRepository;
+	private LocalidadeRepository localidadeRepository;
 	
-	  @GetMapping(value = "/generos/listarPorData/{dataAtualizacao}")
-	  public ResponseEntity<List<Genero>> listarPorData(@PathVariable("dataAtualizacao") String dataAtualizacao) {
+	  @GetMapping(value = "/localidades/listarPorData/{dataAtualizacao}")
+	  public ResponseEntity<List<Localidade>> listarPorData(@PathVariable("dataAtualizacao") String dataAtualizacao) {
 		  Date data = null;
 		try {
 			data = new SimpleDateFormat("yyyy-MM-dd").parse(dataAtualizacao);
 		} catch (ParseException e) {
 			throw new RuntimeException(e);
 		}
-		  List<Genero> lista = generoRepository.findByDataAtualizacao(data);
-	    return new ResponseEntity<List<Genero>>(lista, HttpStatus.OK);
+		  List<Localidade> lista = localidadeRepository.findByDataAtualizacao(data);
+	    return new ResponseEntity<List<Localidade>>(lista, HttpStatus.OK);
 	  }
 
 }

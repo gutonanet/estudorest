@@ -35,9 +35,13 @@ public class Localidade implements Serializable{
 	
 	private String pais;
 
-	@Temporal(value=TemporalType.TIMESTAMP)
+	@Temporal(value=TemporalType.DATE)
 	private Date dataAtualizacao;
 
+	public Localidade() {
+		super();
+	}
+	
 	public Localidade(Long id, String cidade, String uf, String pais, Date dataAtualizacao) {
 		super();
 		this.id = id;
